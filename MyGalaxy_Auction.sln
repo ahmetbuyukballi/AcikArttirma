@@ -5,11 +5,9 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGalaxy_Auction", "MyGalaxy_Auction\MyGalaxy_Auction.csproj", "{B6896C83-F74A-4B8F-A83B-E5436BE4733C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGalaxy_Auction_Data_Access", "MyGalaxy_Auction_Data_Access\MyGalaxy_Auction_Data_Access.csproj", "{0C3C7BB4-A9B4-4778-87D7-CDDDCD76BC80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGalaxy_Auction_Data_Access", "MyGalaxy_Auction_Data_Access\MyGalaxy_Auction_Data_Access.csproj", "{0C3C7BB4-A9B4-4778-87D7-CDDDCD76BC80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGalaxy_Auction_Business", "MyGalaxy_Auction_Business\MyGalaxy_Auction_Business.csproj", "{499CE8B6-6F7E-4BFE-912D-E50F82B9F789}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGalaxy_Auction_Core", "MyGalaxy_Auction_Core\MyGalaxy_Auction_Core.csproj", "{D16B8A52-B3D9-4247-B5FB-DBF63E6A9499}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGalaxy_Auction_Core", "MyGalaxy_Auction_Core\MyGalaxy_Auction_Core.csproj", "{D16B8A52-B3D9-4247-B5FB-DBF63E6A9499}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{0C3C7BB4-A9B4-4778-87D7-CDDDCD76BC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C3C7BB4-A9B4-4778-87D7-CDDDCD76BC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C3C7BB4-A9B4-4778-87D7-CDDDCD76BC80}.Release|Any CPU.Build.0 = Release|Any CPU
-		{499CE8B6-6F7E-4BFE-912D-E50F82B9F789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{499CE8B6-6F7E-4BFE-912D-E50F82B9F789}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{499CE8B6-6F7E-4BFE-912D-E50F82B9F789}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{499CE8B6-6F7E-4BFE-912D-E50F82B9F789}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D16B8A52-B3D9-4247-B5FB-DBF63E6A9499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D16B8A52-B3D9-4247-B5FB-DBF63E6A9499}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D16B8A52-B3D9-4247-B5FB-DBF63E6A9499}.Release|Any CPU.ActiveCfg = Release|Any CPU
