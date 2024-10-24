@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGalaxy_Auction_Data_Acces
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyGalaxy_Auction_Core", "MyGalaxy_Auction_Core\MyGalaxy_Auction_Core.csproj", "{D16B8A52-B3D9-4247-B5FB-DBF63E6A9499}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyGalaxy_Auction_Business", "MyGalaxy_Auction_Business\MyGalaxy_Auction_Business.csproj", "{5AA3C8E4-D5F0-4312-8326-DFFD1A01439D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D16B8A52-B3D9-4247-B5FB-DBF63E6A9499}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D16B8A52-B3D9-4247-B5FB-DBF63E6A9499}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D16B8A52-B3D9-4247-B5FB-DBF63E6A9499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AA3C8E4-D5F0-4312-8326-DFFD1A01439D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AA3C8E4-D5F0-4312-8326-DFFD1A01439D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AA3C8E4-D5F0-4312-8326-DFFD1A01439D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AA3C8E4-D5F0-4312-8326-DFFD1A01439D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
