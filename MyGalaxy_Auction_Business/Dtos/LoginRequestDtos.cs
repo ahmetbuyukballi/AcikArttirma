@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyGalaxy_Auction_Business.Dtos
 {
-    internal class LoginRequestDtos
+    public class LoginRequestDtos
     {
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }
