@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MyGalaxy_Auction_Data_Access.Migrations
 {
     /// <inheritdoc />
-    public partial class mig1 : Migration
+    public partial class createTables : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,6 +30,10 @@ namespace MyGalaxy_Auction_Data_Access.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(21)", maxLength: 21, nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProfilePicture = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -156,6 +160,95 @@ namespace MyGalaxy_Auction_Data_Access.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Vehicle",
+                columns: table => new
+                {
+                    VehicleId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BrandAndModel = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ManuFacturingYear = table.Column<int>(type: "int", nullable: false),
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EngineCapacity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Millage = table.Column<int>(type: "int", nullable: false),
+                    PlateNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AuctionPrice = table.Column<double>(type: "float", nullable: false),
+                    AdditionalInformation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SellerId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vehicle", x => x.VehicleId);
+                    table.ForeignKey(
+                        name: "FK_Vehicle_AspNetUsers_SellerId",
+                        column: x => x.SellerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bids",
+                columns: table => new
+                {
+                    BidId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BidAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    BidDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    BidStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    VehicleId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bids", x => x.BidId);
+                    table.ForeignKey(
+                        name: "FK_Bids_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Bids_Vehicle_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicle",
+                        principalColumn: "VehicleId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PaymentHistory",
+                columns: table => new
+                {
+                    PaymentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    PayDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    VehicleId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentHistory", x => x.PaymentId);
+                    table.ForeignKey(
+                        name: "FK_PaymentHistory_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PaymentHistory_Vehicle_VehicleId",
+                        column: x => x.VehicleId,
+                        principalTable: "Vehicle",
+                        principalColumn: "VehicleId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -194,6 +287,31 @@ namespace MyGalaxy_Auction_Data_Access.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bids_UserId",
+                table: "Bids",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bids_VehicleId",
+                table: "Bids",
+                column: "VehicleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PaymentHistory_UserId",
+                table: "PaymentHistory",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PaymentHistory_VehicleId",
+                table: "PaymentHistory",
+                column: "VehicleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vehicle_SellerId",
+                table: "Vehicle",
+                column: "SellerId");
         }
 
         /// <inheritdoc />
@@ -215,7 +333,16 @@ namespace MyGalaxy_Auction_Data_Access.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Bids");
+
+            migrationBuilder.DropTable(
+                name: "PaymentHistory");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Vehicle");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

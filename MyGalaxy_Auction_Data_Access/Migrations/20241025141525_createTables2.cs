@@ -5,7 +5,7 @@
 namespace MyGalaxy_Auction_Data_Access.Migrations
 {
     /// <inheritdoc />
-    public partial class createtables : Migration
+    public partial class createTables2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
