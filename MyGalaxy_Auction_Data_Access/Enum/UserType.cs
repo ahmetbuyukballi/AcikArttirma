@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyGalaxy_Auction_Data_Access.Enum
 {
-    internal class UserType
+    public enum UserType
     {
+        Administrator,
+        Seller,
+        NormalUser
     }
 }
