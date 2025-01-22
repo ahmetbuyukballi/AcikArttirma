@@ -1,28 +1,24 @@
-﻿using MyGalaxy_Auction_Data_Access.Models;
+﻿using MyGalaxy_Auction_Data_Access.Domain;
+using MyGalaxy_Auction_Data_Access.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyGalaxy_Auction_Data_Access.Enum;
-using System.Text.Json.Serialization;
 
-namespace MyGalaxy_Auction_Data_Access.Domain
+namespace MyGalaxy_Auction_Business.Dtos
 {
-    public class Bid
+    public class UpdateBidDtos
     {
         [Key]
         public int BidId { get; set; }
         public decimal BidAmount { get; set; }
         public DateTime BidDate { get; set; }
-        public string BidStatus { get; set; }=Enum.BıdStatus.Pending.ToString();
+        public string BidStatus { get; set; } 
         public string UserId { get; set; }
-        [JsonIgnore]
         public ApplicationUser User { get; set; }
         public int VehicleId { get; set; }
-        [JsonIgnore]
         public Vehicle Vehicle { get; set; }
     }
 }

@@ -8,6 +8,8 @@ using MyGalaxy_Auction_Data_Access.Models;
 using System.Reflection;
 using AutoMapper;
 using MyGalaxy_Auction.Extensions;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +20,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApplicationLayer(builder.Configuration);
 builder.Services.AddDbContextLayer(builder.Configuration);
+builder.Services.AddSwaggerCollection(builder.Configuration);
 //builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddSwaggerGen();
-
+var options = new JsonSerializerOptions
+{
+    ReferenceHandler = ReferenceHandler.Preserve
+};
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,7 +38,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
