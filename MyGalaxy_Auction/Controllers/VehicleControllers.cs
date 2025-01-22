@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyGalaxy_Auction_Business.Abraction;
 using MyGalaxy_Auction_Business.Dtos;
 using MyGalaxy_Auction_Core.Models;
@@ -56,6 +57,7 @@ namespace MyGalaxy_Auction.Controllers
             return BadRequest();
         }
         [HttpDelete("Delete")]
+        [Authorize(Roles ="Administrator")]
         public async Task<IActionResult> Delete([FromQuery] int VehicleId)
         {
             var result = await _vehicleService.DeleteVehicle(VehicleId);
@@ -67,6 +69,7 @@ namespace MyGalaxy_Auction.Controllers
 
         }
         [HttpGet("GetVehicles")]
+      
         public async Task<IActionResult> GetAllVehicle()
         {
             var result = await _vehicleService.GetVehicle();

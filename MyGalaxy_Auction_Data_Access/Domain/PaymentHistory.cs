@@ -16,6 +16,8 @@ namespace MyGalaxy_Auction_Data_Access.Domain
         public string UserId { get; set; }
         public bool IsActive { get; set; }
         public DateTime PayDate { get; set; }
+        public string ClientSecret { get; set; }
+        public string StripePaymentInentId { get; set; }
         public int VehicleId { get; set; }
         public Vehicle Vehicle { get; set; }
         public ApplicationUser User { get; set; }

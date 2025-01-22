@@ -122,15 +122,15 @@ namespace MyGalaxy_Auction_Business.Concrete
                 }
                 if (models.UserType.ToString().ToLower() == UserType.Administrator.ToString().ToLower()) 
                 { 
-                    await _userManager.AddToRoleAsync(user, models.UserType);
+                    await _userManager.AddToRoleAsync(user, UserType.Administrator.ToString());
                 }
                 if(models.UserType.ToString().ToLower()== UserType.Seller.ToString().ToLower())
                 {
-                    await _userManager.AddToRoleAsync(user,models.UserType);
+                    await _userManager.AddToRoleAsync(user,UserType.Seller.ToString());
                 }
-                else
+                else if(models.UserType.ToString().ToLower() == UserType.NormalUser.ToString().ToLower())
                 {
-                    await _userManager.AddToRoleAsync(user, models.UserType);
+                    await _userManager.AddToRoleAsync(user, UserType.NormalUser.ToString());
                 }
                 _apiResponse.StatusCode=HttpStatusCode.Created;
                 _apiResponse.IsSucces=true;
